@@ -18,7 +18,10 @@ The current board has ${boardState.tilesLeft} tiles left.
 There are ${movesAvailable.length} possible moves right now.
 Possible moves: ${JSON.stringify(movesAvailable.slice(0, 5))}...
 Provide a short, meditative, and helpful piece of advice (max 2 sentences) in Russian.
-Suggest which kind of tiles to focus on (e.g. bamboo, dots, characters, seasons, flowers) or where on the board (layers/sides).`;
+Suggest which kind of tiles to focus on (e.g. bamboo, dots, characters, seasons, flowers) or where on the board (layers/sides).
+Return only plain Russian text.
+Do not add English.
+Do not use quotes or markdown.`;
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -29,10 +32,10 @@ Suggest which kind of tiles to focus on (e.g. bamboo, dots, characters, seasons,
       body: JSON.stringify({
         model: 'llama-3.1-8b-instant',
         messages: [
-          { role: 'system', content: 'You are a helpful Zen Mahjong coach. Be concise and calm.' },
+          { role: 'system', content: 'You are a helpful Zen Mahjong coach. Reply only in Russian, with calm and concise plain text.' },
           { role: 'user', content: prompt },
         ],
-        temperature: 0.7,
+        temperature: 0.2,
         max_tokens: 150,
       }),
     });
