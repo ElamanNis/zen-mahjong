@@ -497,8 +497,8 @@ export function GameBoard() {
   }, [activeTiles, recordAiUsed, setHint, store]);
 
   return (
-    <div className="relative flex h-full min-h-[780px] w-full gap-4 overflow-hidden bg-slate-950/20 p-4 2xl:gap-6 2xl:p-6">
-      <aside className="scrollbar-hide flex w-[18rem] flex-col gap-4 overflow-y-auto 2xl:w-80">
+    <div className="relative flex min-h-[680px] w-full flex-col gap-4 bg-slate-950/20 p-3 sm:p-4 xl:min-h-[780px] xl:flex-row xl:overflow-hidden 2xl:gap-6 2xl:p-6">
+      <aside className="scrollbar-hide order-2 grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:order-1 xl:flex xl:w-[18rem] xl:flex-col xl:overflow-y-auto 2xl:w-80">
         <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 shadow-2xl shadow-slate-950/30 backdrop-blur-xl">
           <div className="mb-4 flex items-center justify-between">
             <div>
@@ -725,25 +725,25 @@ export function GameBoard() {
         </div>
       </aside>
 
-      <section className="relative flex min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/10 bg-slate-950/50 shadow-[0_30px_80px_rgba(2,6,23,0.55)]">
+      <section className="relative order-1 flex min-h-[560px] w-full min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/50 shadow-[0_30px_80px_rgba(2,6,23,0.55)] sm:min-h-[640px] sm:rounded-[2.5rem] xl:order-2 xl:min-h-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.12),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.14),transparent_28%)]" />
 
-        <div className="absolute left-6 top-6 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300 backdrop-blur-xl">
+        <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/75 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-slate-300 backdrop-blur-xl sm:left-6 sm:top-6 sm:text-xs">
           <span className={cn('h-2 w-2 rounded-full', store.currentMode === 'daily' ? 'bg-orange-400' : 'bg-emerald-400')} />
           {store.currentMode === 'daily' ? 'Ежедневный вызов' : 'Режим фокуса'}
         </div>
 
         <button
           onClick={() => setIsGuideOpen(true)}
-          className="absolute right-6 top-6 z-20 flex items-center gap-2 rounded-full border border-sky-500/15 bg-sky-500/10 px-4 py-2 text-sm font-medium text-sky-200 backdrop-blur-xl transition hover:bg-sky-500/15"
+          className="absolute left-4 top-16 z-20 flex items-center gap-2 rounded-full border border-sky-500/15 bg-sky-500/10 px-4 py-2 text-sm font-medium text-sky-200 backdrop-blur-xl transition hover:bg-sky-500/15 sm:left-auto sm:right-6 sm:top-6"
         >
           <BookOpen className="h-4 w-4" />
           Инструкция игры
         </button>
 
-        <div className="relative flex h-full w-full items-center justify-center px-4 py-16 sm:px-8">
+        <div className="relative flex h-full w-full items-center justify-center overflow-x-auto overflow-y-hidden px-2 pb-24 pt-24 sm:px-8 sm:py-16">
           <div
-            className="relative origin-center scale-[0.86] sm:scale-[0.92] lg:scale-[1.02] xl:scale-[1.12] 2xl:scale-[1.18]"
+            className="relative origin-center scale-[0.56] sm:scale-[0.76] md:scale-[0.9] lg:scale-[1.02] xl:scale-[1.12] 2xl:scale-[1.18]"
             style={{ width: BOARD_WIDTH, height: BOARD_HEIGHT }}
           >
             <AnimatePresence initial={false}>
@@ -764,7 +764,7 @@ export function GameBoard() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-2 shadow-2xl backdrop-blur-xl">
+        <div className="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-center gap-2 overflow-x-auto rounded-[1.25rem] border border-white/10 bg-slate-950/85 p-2 shadow-2xl backdrop-blur-xl sm:bottom-8 sm:left-1/2 sm:right-auto sm:w-auto sm:-translate-x-1/2 sm:rounded-[1.5rem]">
           <button
             onClick={() => store.undo()}
             className="rounded-xl p-3 text-slate-400 transition-all hover:bg-slate-800 hover:text-white disabled:opacity-30"
@@ -778,7 +778,7 @@ export function GameBoard() {
 
           <button
             onClick={findHint}
-            className="group flex items-center gap-2 rounded-xl bg-emerald-600 px-8 py-3 font-semibold text-white shadow-lg shadow-emerald-600/30 transition-all hover:bg-emerald-500"
+            className="group flex shrink-0 items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white shadow-lg shadow-emerald-600/30 transition-all hover:bg-emerald-500 sm:px-8"
           >
             <Lightbulb className="h-5 w-5 transition-transform group-hover:scale-110" />
             Подсказка
@@ -853,7 +853,7 @@ export function GameBoard() {
         </AnimatePresence>
       </section>
 
-      <aside className="scrollbar-hide flex w-[18rem] flex-col gap-4 overflow-y-auto 2xl:w-80">
+      <aside className="scrollbar-hide order-3 grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:flex xl:w-[18rem] xl:flex-col xl:overflow-y-auto 2xl:w-80">
         <div className="rounded-[1.75rem] border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur-sm">
           <div className="mb-4 flex items-center justify-between">
             <div>
