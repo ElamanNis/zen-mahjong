@@ -1,30 +1,127 @@
 # Zen Mahjong
 
-Zen Mahjong is a polished browser mahjong solitaire experience with calm visuals, account sync, daily runs, AI move guidance, progression, and Stripe-ready upgrade flow.
+Zen Mahjong — это современная веб-версия маджонг-солитера, в которой я постарался соединить спокойный игровой опыт и логику настоящего digital-продукта. Здесь есть не только само поле и механика плиток, но и прогресс игрока, ежедневные активности, AI-помощник, лидерборд, аккаунт и готовая база под монетизацию.
 
-## What I built
+Идея была простой: сделать не “техническую демку”, а проект, который уже выглядит как почти готовый продукт, который можно деплоить, показывать и дальше развивать.
 
-- A larger and more comfortable game board layout with reduced visual jitter.
-- An AI Coach that suggests real playable pairs and can highlight them on the board.
-- A visual in-app game guide with infographic-style onboarding.
-- Local progression with wins, XP, streaks, achievements, and session stats.
-- Supabase leaderboard integration for saved scores.
-- Clerk authentication and Stripe checkout endpoints for account/pro upgrade flows.
+## Демо
 
-## Who it is for
+- Рабочий проект: https://zen-mahjong.vercel.app
+- GitHub-репозиторий: https://github.com/ElamanNis/zen-mahjong
 
-- Casual players who want a calm and readable mahjong experience.
-- Mobile and desktop users who benefit from clear onboarding and larger interactive elements.
-- Product teams that want a game prototype already shaped like a deployable SaaS-style product.
+## Что это за продукт
 
-## Why it is valuable
+Если коротко, Zen Mahjong — это спокойная логическая игра для браузера с фокусом на:
 
-- The interface now feels easier to read and less tiring during longer sessions.
-- New players get immediate help through the in-app guide instead of getting lost.
-- The AI Coach is useful in practice because it points to actual moves, not vague advice.
-- The project already includes the core monetization and retention pieces needed for a real launch.
+- чистый и приятный интерфейс;
+- понятный onboarding;
+- ощущение прогресса;
+- удержание через daily-механику;
+- полезный AI-слой, который помогает игроку, а не просто “существует”.
 
-## Tech stack
+Это хороший формат для MVP, портфолио-проекта или основы для будущего игрового веб-сервиса.
+
+## Что я сделал
+
+В рамках проекта я собрал несколько уровней продукта сразу.
+
+### 1. Игровая механика
+
+- реализовал логику маджонг-солитера;
+- добавил выбор плиток, поиск совпадений и удаление пар;
+- сделал подсказки и откат хода;
+- добавил обычный режим и daily run.
+
+### 2. UX и интерфейс
+
+- переработал визуальную структуру так, чтобы поле выглядело крупнее и удобнее;
+- убрал раздражающие “прыжки” плиток из-за лишних перерисовок;
+- добавил более продуктовый интерфейс с метриками, прогрессом и боковыми панелями;
+- встроил визуальную инструкцию по игре в формате понятного onboarding-блока.
+
+### 3. AI Coach
+
+- добавил AI-помощника прямо в игровой интерфейс;
+- сделал так, чтобы он не просто давал общий совет, а показывал реальные решения и помогал с ориентацией по полю;
+- обновил интеграцию с актуальной моделью Groq, чтобы API работал стабильно.
+
+### 4. Product layer
+
+- прогресс игрока;
+- XP, уровни и достижения;
+- ежедневная серия;
+- лидерборд;
+- аккаунт;
+- подготовка под Pro/монетизацию.
+
+То есть проект построен уже не как “игра ради игры”, а как полноценный продуктовый каркас.
+
+## Для кого этот проект
+
+Я вижу у него сразу несколько сценариев использования:
+
+- для игроков, которым нужен спокойный, понятный и красивый маджонг в браузере;
+- для портфолио, если хочется показать сильный full-stack pet project;
+- для MVP, если есть идея развивать игру дальше как сервис;
+- для изучения архитектуры современного Next.js-приложения с auth, API и внешними сервисами.
+
+## Почему это ценно
+
+У многих игровых пет-проектов есть одна проблема: они заканчиваются на “поле работает”. Здесь я специально пошёл дальше.
+
+Ценность проекта в том, что он уже показывает:
+
+- как игровая механика превращается в продукт;
+- как AI можно встроить в UX осмысленно;
+- как добавить ретеншн через ежедневные активности;
+- как подвести проект к реальному деплою, аккаунтам, базе и оплате.
+
+То есть это уже не просто код ради кода, а заготовка под реальную пользовательскую ценность.
+
+## Основные возможности
+
+### Игровой опыт
+
+- классическая механика маджонг-солитера;
+- свободные плитки определяются по правилам раскладки;
+- есть undo;
+- есть hint;
+- есть перезапуск сессии;
+- есть ежедневная раскладка.
+
+### AI Coach
+
+- анализирует текущее состояние поля;
+- подсказывает, на какие ходы и зоны лучше смотреть;
+- встроен прямо в интерфейс;
+- помогает не только текстом, но и через связку с игровым UX.
+
+### Прогресс и мотивация
+
+- очки за сессию;
+- комбо;
+- лучший счёт;
+- XP и уровни;
+- победы;
+- достижения;
+- daily streak.
+
+### Аккаунт и данные
+
+- авторизация через Clerk;
+- хранение результатов в Supabase;
+- лидерборд игроков;
+- база для дальнейшей синхронизации прогресса между устройствами.
+
+### Монетизация
+
+- подготовлены Stripe checkout endpoints;
+- есть основа под Pro-функции;
+- архитектура учитывает дальнейшее развитие в сторону платного апгрейда.
+
+## Стек
+
+Проект собран на:
 
 - Next.js 15
 - React 19
@@ -35,20 +132,47 @@ Zen Mahjong is a polished browser mahjong solitaire experience with calm visuals
 - Stripe
 - Groq API
 
-## Local run
+## Локальный запуск
 
-1. Install dependencies:
+1. Установить зависимости:
    `npm install`
-2. Create `.env.local` from `.env.example` and fill in Clerk, Supabase, Stripe, and Groq keys.
-3. Start the app:
+2. Создать `.env.local` на основе `.env.example`
+3. Заполнить переменные окружения для:
+   - Clerk
+   - Supabase
+   - Stripe
+   - Groq
+4. Запустить проект:
    `npm run dev`
 
-## Scripts
+## Полезные команды
 
-- `npm run dev`
-- `npm run build`
-- `npm run lint`
+- `npm run dev` — локальный запуск
+- `npm run build` — production build
+- `npm run lint` — проверка линтером
 
-## Deployment
+## Структура проекта
 
-The project is configured for Vercel deployment.
+- `app/` — страницы и API-роуты Next.js
+- `components/` — UI и игровые компоненты
+- `hooks/` — Zustand store и клиентские хуки
+- `lib/` — игровая логика, AI-вспомогательные функции, утилиты, Supabase
+- `supabase/` — SQL и подготовка структуры БД
+
+## Что можно улучшить дальше
+
+Если продолжать развитие, логичные следующие шаги такие:
+
+- полноценный профиль игрока;
+- история партий;
+- синхронизация всего прогресса в БД;
+- больше типов раскладок;
+- более глубокий AI Coach с пошаговым планом на несколько ходов;
+- сезонные события, темы и расширенная кастомизация;
+- отдельная мобильная оптимизация под long-session UX.
+
+## Итог
+
+Zen Mahjong — это спокойная браузерная игра, которая уже ощущается как продукт, а не как заготовка. В ней есть геймплей, AI, прогресс, аккаунт, лидерборд, монетизационный фундамент и рабочий деплой.
+
+Если совсем коротко: это сильный full-stack pet project, который можно показывать как портфолио, развивать как MVP и использовать как базу для реального запуска.
